@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shampad — Backend Engineer & Indie Builder. Advanced API integrations, ad tech specialization, and scalable architecture.">
+  <title>Shampad — Backend Engineer & Indie Builder</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-card: rgba(15, 15, 15, 0.6);
+      --bg-card-hover: rgba(22, 22, 22, 0.8);
+      --border: rgba(255, 255, 255, 0.1);
+      --border-hover: rgba(255, 255, 255, 0.2);
+      --text-primary: #EDEDED;
+      --text-secondary: #A1A1AA;
+      --text-muted: #52525B;
+      --accent: #FFFFFF;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Background Grids & Orbs */
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .nav { display: flex; gap: 24px; }
+    .nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .nav a:hover { color: var(--text-primary); }
+
+    .mobile-nav { display: none; }
+    @media(max-width: 640px) {
+      .header .nav { display: none; }
+      .mobile-nav {
+        display: flex; position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+        background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--border); border-radius: 99px; z-index: 50;
+        padding: 12px 24px; gap: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      }
+      .mobile-nav a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+      .mobile-nav a:hover { color: var(--text-primary); }
+    }
+
+    /* Grid System */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .col-span-1 { grid-column: span 1; }
+    .col-span-2 { grid-column: span 2; }
+    .col-span-3 { grid-column: span 3; }
+    .col-span-4 { grid-column: span 4; }
+    .row-span-1 { grid-row: span 1; }
+    .row-span-2 { grid-row: span 2; }
+
+    @media(max-width: 860px) {
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .col-span-3, .col-span-4 { grid-column: span 2; }
+    }
+    @media(max-width: 640px) {
+      .bento-grid { grid-template-columns: 1fr; }
+      .col-span-2, .col-span-3, .col-span-4 { grid-column: span 1; }
+      .row-span-2 { grid-row: span 1; }
+    }
+
+    /* Bento Cards */
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      color: inherit;
+    }
+    .bento-card:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+    
+    /* Mouse glow effect */
+    .bento-card::before {
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient( 500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.05), transparent 40% );
+      z-index: 1; opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+    }
+    .bento-grid:hover .bento-card::before { opacity: 1; }
+    .bento-card > * { position: relative; z-index: 2; }
+
+    /* Typography & Utilities */
+    .label {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 16px; font-family: var(--font-mono);
+    }
+    .section-heading {
+      font-size: 1.5rem; font-weight: 600; letter-spacing: -0.03em;
+      color: var(--text-primary); margin: 64px 0 24px;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; letter-spacing: -0.04em;
+      line-height: 1.1; margin: 0 0 16px 0;
+      background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-desc { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin: 0; }
+    p { margin: 0 0 16px 0; color: var(--text-secondary); }
+
+    .flex { display: flex; }
+    .flex-col { display: flex; flex-direction: column; }
+    .flex-row { display: flex; flex-direction: row; }
+    .flex-wrap { flex-wrap: wrap; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .items-center { align-items: center; }
+    .items-start { align-items: flex-start; }
+    .flex-1 { flex: 1; }
+    .text-center { text-align: center; }
+    
+    .gap-2 { gap: 8px; } .gap-3 { gap: 12px; } .gap-4 { gap: 16px; } .gap-6 { gap: 24px; }
+    .mt-2 { margin-top: 8px; } .mt-4 { margin-top: 16px; } .mt-6 { margin-top: 24px; } .mt-auto { margin-top: auto; }
+    .mb-2 { margin-bottom: 8px; } .mb-4 { margin-bottom: 16px; } .mb-0 { margin-bottom: 0; }
+    .pt-32 { padding-top: 120px; } .pb-24 { padding-bottom: 96px; }
+
+    .text-white { color: var(--text-primary); }
+    .text-muted { color: var(--text-muted); }
+    .text-sm { font-size: 0.875rem; }
+    .text-xl { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+    .text-2xl { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.03em; }
+    
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 20px; border-radius: 8px; font-size: 0.875rem; font-weight: 500;
+      transition: all 0.2s ease; text-decoration: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--text-primary); color: var(--bg); }
+    .btn-primary:hover { background: #fff; transform: scale(0.98); }
+    .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); }
+
+    /* Custom Elements */
+    .stat-number { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; color: var(--text-primary); line-height: 1; margin-bottom: 8px;}
+    
+    .pulse-ring {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(52, 211, 153, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; margin: 0 auto;
+    }
+    .pulse-dot { width: 12px; height: 12px; border-radius: 50%; background: #34d399; }
+    .pulse-ring::before {
+      content: ""; position: absolute; inset: 0; border-radius: 50%;
+      background: rgba(52, 211, 153, 0.3);
+      animation: pulse-animation 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes pulse-animation { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+    .skills-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 99px; font-size: 0.85rem;
+      color: var(--text-secondary); font-family: var(--font-mono); transition: all 0.2s;
+    }
+    .skill-tag:hover { background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border-color: var(--border-hover); }
+
+    .project-badge {
+      background: #000; border: 1px solid var(--border); color: var(--text-secondary);
+      font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;
+    }
+    .project-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: var(--text-primary);
+    }
+    
+    .exp-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+    .exp-list li { position: relative; padding-left: 20px; margin-bottom: 12px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; }
+    .exp-list li::before { content: "→"; position: absolute; left: 0; color: var(--text-muted); font-family: var(--font-mono); }
+
+    /* Animation on scroll */
+    .animate-on-scroll {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg-pattern"></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Md Shampad Sharkar</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#projects">Works</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="#about">About</a>
+    <a href="#projects">Works</a>
+    <a href="#experience">Exp</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main class="container pt-32 pb-24">
+    
+    <!-- SECTION: ABOUT -->
+    <div id="about" class="bento-grid">
+      
+      <!-- Bio -->
+      <div class="bento-card col-span-2 row-span-2 flex-col justify-between animate-on-scroll">
+        <div>
+          <div class="label">Introduction</div>
+          <h1 class="hero-title">Backend Engineer<br>& Indie Builder</h1>
+          <p class="hero-desc">I build high-throughput systems, optimize APIs, and ship side projects. Currently running Tara Systems out of Dhaka, bringing 5+ years of Python, Django, and architecture experience.</p>
+        </div>
+        <div class="flex gap-4 mt-6">
+          <a href="#projects" class="btn btn-primary">Selected Works</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <!-- Stat -->
+      <div class="bento-card col-span-1 row-span-1 flex-col items-center justify-center text-center animate-on-scroll" style="transition-delay: 50ms;">
+        <div class="stat-number">5<span class="text-muted">+</span></div>
+        <div class="text-sm text-secondary">Years of Backend Experience</div>
+      </div>
+
+      <!-- Status -->
+      <div class="bento-card col-span-1 row-span-1 flex-col justify-center text-center items-center animate-on-scroll" style="transition-delay: 100ms;">
+        <div class="pulse-ring mb-4"><div class="pulse-dot"></div></div>
+        <div class="text-sm text-secondary">Available for remote roles & freelance contracts</div>
+      </div>
+
+      <!-- Niche -->
+      <div class="bento-card col-span-2 row-span-1 flex-col justify-center animate-on-scroll" style="transition-delay: 150ms;">
+        <div class="label">Niche Expertise</div>
+        <h3 class="text-xl text-white mb-2 mt-0">Ad Tech Platforms</h3>
+        <p class="text-sm text-muted mb-0">Deep familiarity with ad network integrations (Google Ads, TikTok, GAM), programmatic pipelines, and high-volume data importers.</p>
+      </div>
+
+    </div>
+
+    <!-- Skills -->
+    <div class="bento-grid">
+      <div class="bento-card col-span-4 row-span-1 flex-col animate-on-scroll">
+        <div class="label mb-4">Core Technology Stack</div>
+        <div class="skills-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">GraphQL</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Redis</span>
+          <span class="skill-tag">Celery</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">GCP</span>
+          <span class="skill-tag">Rust</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">LangGraph</span>
+          <span class="skill-tag">BigQuery</span>
+          <span class="skill-tag">Kotlin</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- SECTION: PROJECTS -->
+    <h2 class="section-heading animate-on-scroll" id="projects">Selected Works</h2>
+    <div class="bento-grid">
+      
+      <!-- LabLink -->
+      <a href="https://lablink.bd" target="_blank" class="bento-card col-span-2 row-span-2 flex-col animate-on-scroll">
+        <div class="flex justify-between items-start mb-6">
+          <div class="project-icon">✦</div>
+          <span class="project-badge">SaaS</span>
+        </div>
+        <h3 class="text-2xl text-white mb-2 mt-0">LabLink</h3>
+        <p class="text-secondary flex-1">Multi-tenant diagnostic center management system built for Bangladesh's healthcare market. Covers the full workflow — patient registration, test ordering, structured report generation with gender/age-aware reference ranges, branded PDF printing, and delivery tracking. Features a 6-tier role system (Superadmin → Patient), tenant isolation at the queryset level, and Celery-powered async notifications. Currently in production.</p>
+        <div class="skills-tags mt-6">
+          <span class="skill-tag">Django 6</span><span class="skill-tag">DRF</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Celery</span><span class="skill-tag">Redis</span><span class="skill-tag">React 18</span><span class="skill-tag">Docker</span>
+        </div>
+      </a>
+
+      <!-- SmartClip -->
+      <a href="https://smartclip.shampadsr.com" target="_blank" class="bento-card col-span-2 row-span-1 flex-col justify-between animate-on-scroll">
+        <div class="flex justify-between items-start mb-3">
+           <h3 class="text-xl text-white mt-0 mb-0">SmartClip</h3>
+           <span class="project-badge">macOS</span>
+        </div>
+        <p class="text-sm text-secondary mb-4 flex-1">macOS clipboard manager living in the menu bar. Instant search, history limits, image support, plain-text mode.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Tauri 2</span><span class="skill-tag">Rust</span><span class="skill-tag">React</span>
+        </div>
+      </a>
+
+      <!-- TankLog -->
+      <a href="https://play.google.com/store/apps/details?id=com.fuellogpro.app&hl=en" target="_blank" class="bento-card col-span-1 row-span-1 flex-col justify-between animate-on-scroll">
+        <div class="flex justify-between items-start mb-3">
+           <h3 class="text-xl text-white mt-0 mb-0">TankLog</h3>
+        </div>
+        <p class="text-sm text-secondary mb-4 flex-1">Android fuel tracking app with Firebase sync.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Kotlin</span><span class="skill-tag">Compose</span>
+        </div>
+      </a>
+
+      <!-- MCP Server -->
+      <a href="https://mcp.shampadsr.com" target="_blank" class="bento-card col-span-1 row-span-1 flex-col justify-between animate-on-scroll">
+        <div class="flex justify-between items-start mb-3">
+           <h3 class="text-xl text-white mt-0 mb-0">MCP Server</h3>
+        </div>
+        <p class="text-sm text-secondary mb-4 flex-1">Personal AI integration platform with 46 tools for tasks, finance & blogging.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Python</span><span class="skill-tag">LangGraph</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="bento-grid">
+      <!-- Ad Tech -->
+      <div class="bento-card col-span-4 row-span-1 flex-col animate-on-scroll">
+        <div class="flex justify-between items-center mb-4">
+           <h3 class="text-xl text-white mt-0 mb-0">Programmatic Ad Tech Integrations</h3>
+           <span class="project-badge">Enterprise Platform</span>
+        </div>
+        <p class="text-secondary max-w-2xl mb-4">Developed multi-source reporting pipelines integrating 20+ ad networks (Google Ads, TikTok, GAM, Mintegral, Liftoff). Refactored legacy data tasks to a unified importer framework and dropped complex GraphQL query times from ~2 min to ~10 sec.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">GraphQL (Strawberry)</span><span class="skill-tag">BigQuery</span><span class="skill-tag">GKE</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- SECTION: EXPERIENCE -->
+    <h2 class="section-heading animate-on-scroll" id="experience">Experience</h2>
+    <div class="bento-grid">
+      
+      <!-- AnyMind -->
+      <div class="bento-card col-span-2 row-span-2 flex-col animate-on-scroll">
+        <div class="label mb-2">Dec 2021 — Present</div>
+        <h3 class="text-xl text-white mt-0 mb-1">Software Engineer</h3>
+        <div class="text-muted text-sm mb-6">AnyMind Group • Bangkok, Thailand</div>
+        <ul class="exp-list">
+           <li>Built data pipelines across 20+ ad networks (Google Ads, TikTok, GAM, Mintegral).</li>
+           <li>Resolved critical N+1 GraphQL bottlenecks reducing API response times from ~2 min to ~10 sec.</li>
+           <li>Deployed customer-facing AI chatbot using LangGraph and LangChain for reporting insights.</li>
+           <li>Managed production infrastructure on GCP/GKE including troubleshooting Node Auto Provisioning.</li>
+        </ul>
+      </div>
+
+      <!-- Tara Systems -->
+      <div class="bento-card col-span-2 row-span-1 flex-col animate-on-scroll" style="transition-delay: 50ms;">
+        <div class="label mb-2">2021 — Present</div>
+        <h3 class="text-xl text-white mt-0 mb-1">Founder & Engineer</h3>
+        <div class="text-muted text-sm mb-4">Tara Systems • Dhaka, Bangladesh</div>
+        <ul class="exp-list">
+           <li>Founded a software studio delivering B2B SaaS (LabLink) and B2C native apps (SmartClip, TankLog).</li>
+        </ul>
+      </div>
+
+      <!-- UnidevGo -->
+      <div class="bento-card col-span-2 row-span-1 flex-col animate-on-scroll" style="transition-delay: 100ms;">
+        <div class="label mb-2">Dec 2020 — Dec 2021</div>
+        <h3 class="text-xl text-white mt-0 mb-1">Software Automation Engineer</h3>
+        <div class="text-muted text-sm mb-4">UnidevGo • Dhaka, Bangladesh</div>
+        <ul class="exp-list">
+           <li>Built a reusable test automation framework in Python (POM pattern) enabling rapid QA pipeline onboarding.</li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <!-- SECTION: CONTACT -->
+    <h2 class="section-heading animate-on-scroll" id="contact">Get In Touch</h2>
+    <div class="bento-grid">
+      <a href="mailto:shampad.sharkar@gmail.com" class="bento-card col-span-2 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll">
+          shampad.sharkar@gmail.com ↗
+      </a>
+      <a href="https://github.com/sompodsign" target="_blank" class="bento-card col-span-1 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll" style="transition-delay: 50ms;">
+          GitHub ↗
+      </a>
+      <a href="https://www.linkedin.com/in/shampadsharkar/" target="_blank" class="bento-card col-span-1 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll" style="transition-delay: 100ms;">
+          LinkedIn ↗
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+           entry.target.classList.add('visible');
+           observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mouse tracking for bento card glow effect
+    document.querySelectorAll('.bento-grid').forEach(grid => {
+      grid.addEventListener('mousemove', e => {
+        const cards = grid.querySelectorAll('.bento-card');
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
