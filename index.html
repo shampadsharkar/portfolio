@@ -122,6 +122,8 @@
       .bento-grid { grid-template-columns: 1fr; }
       .col-span-2, .col-span-3, .col-span-4 { grid-column: span 1; }
       .row-span-2 { grid-row: span 1; }
+      .bio-layout { grid-template-columns: 1fr; gap: 24px; }
+      .profile-photo-wrap { max-width: 220px; margin: 0 auto; }
     }
 
     /* Bento Cards */
@@ -170,6 +172,66 @@
     }
     .hero-desc { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin: 0; }
     p { margin: 0 0 16px 0; color: var(--text-secondary); }
+
+    .bio-layout {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.2fr);
+      gap: 32px;
+      align-items: center;
+      height: 100%;
+    }
+    .profile-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      filter: grayscale(12%);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    }
+    .profile-photo-wrap {
+      position: relative;
+      padding: 1px;
+      border-radius: 17px;
+      overflow: hidden;
+      background: conic-gradient(from 180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.6), rgba(255,255,255,0.08));
+      animation: photo-border-spin 8s linear infinite;
+      box-shadow: 0 0 32px rgba(255, 255, 255, 0.08);
+    }
+    .profile-photo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 58%);
+      animation: photo-glow 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .profile-photo-wrap:hover .profile-photo {
+      transform: scale(1.035);
+      filter: grayscale(0%);
+    }
+    .profile-photo-badge {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 99px;
+      background: rgba(0,0,0,0.62);
+      color: var(--text-primary);
+      font: 0.68rem var(--font-mono);
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(10px);
+      animation: badge-float 3s ease-in-out infinite;
+    }
+    @keyframes photo-border-spin { to { background: conic-gradient(from 540deg, rgba(255,255,255,0.08), rgba(255,255,255,0.6), rgba(255,255,255,0.08)); } }
+    @keyframes photo-glow { 0%, 100% { transform: translate(-8%, -5%); opacity: 0.35; } 50% { transform: translate(8%, 5%); opacity: 0.75; } }
+    @keyframes badge-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .profile-photo-wrap, .profile-photo-wrap::before, .profile-photo-badge { animation: none; }
+    }
 
     .flex { display: flex; }
     .flex-col { display: flex; flex-direction: column; }
@@ -281,15 +343,21 @@
     <div id="about" class="bento-grid">
       
       <!-- Bio -->
-      <div class="bento-card col-span-2 row-span-2 flex-col justify-between animate-on-scroll">
-        <div>
-          <div class="label">Introduction</div>
-          <h1 class="hero-title">Backend Engineer<br>& Indie Builder</h1>
-          <p class="hero-desc">I build high-throughput systems, optimize APIs, and ship side projects. Currently running Tara Systems out of Dhaka, bringing 5+ years of Python, Django, and architecture experience.</p>
-        </div>
-        <div class="flex gap-4 mt-6">
-          <a href="#projects" class="btn btn-primary">Selected Works</a>
-          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+      <div class="bento-card col-span-3 row-span-2 flex-col justify-between animate-on-scroll">
+        <div class="bio-layout">
+          <div class="profile-photo-wrap">
+            <img class="profile-photo" src="assets/images/ChatGPT%20Image%20Aug%2022,%202026,%2010_41_34%20AM.jpg" alt="Professional portrait of Md Shampad Sharkar">
+            <span class="profile-photo-badge">Dhaka · BD</span>
+          </div>
+          <div>
+            <div class="label">Introduction</div>
+            <h1 class="hero-title">Backend Engineer<br>& Indie Builder</h1>
+            <p class="hero-desc">I build high-throughput systems, optimize APIs, and ship side projects. Currently running Tara Systems out of Dhaka, bringing 5+ years of Python, Django, and architecture experience.</p>
+            <div class="flex gap-4 mt-6">
+              <a href="#projects" class="btn btn-primary">Selected Works</a>
+              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -385,6 +453,30 @@
         <p class="text-sm text-secondary mb-4 flex-1">Personal AI integration platform with 46 tools for tasks, finance & blogging.</p>
         <div class="skills-tags">
           <span class="skill-tag">Python</span><span class="skill-tag">LangGraph</span>
+        </div>
+      </a>
+
+      <!-- SpeakingDude -->
+      <a href="https://speakingdude.com" target="_blank" rel="noopener noreferrer" class="bento-card col-span-2 row-span-1 flex-col justify-between animate-on-scroll">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-xl text-white mt-0 mb-0">SpeakingDude</h3>
+          <span class="project-badge">AI Learning Platform</span>
+        </div>
+        <p class="text-sm text-secondary mb-4 flex-1">Voice-first IELTS and conversational-English practice platform with AI feedback, speaking sessions, vocabulary growth, and progress tracking.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Django</span><span class="skill-tag">React</span><span class="skill-tag">AI</span><span class="skill-tag">WebSockets</span>
+        </div>
+      </a>
+
+      <!-- KarbarPro -->
+      <a href="https://karbarpro.com" target="_blank" rel="noopener noreferrer" class="bento-card col-span-2 row-span-1 flex-col justify-between animate-on-scroll">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-xl text-white mt-0 mb-0">KarbarPro</h3>
+          <span class="project-badge">Retail SaaS</span>
+        </div>
+        <p class="text-sm text-secondary mb-4 flex-1">Multi-tenant business management platform for Bangladeshi shops, covering daily cash ledgers, sales, credit customers, inventory, pharmacy workflows, and Bengali support.</p>
+        <div class="skills-tags">
+          <span class="skill-tag">Django</span><span class="skill-tag">GraphQL</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Celery</span>
         </div>
       </a>
 
