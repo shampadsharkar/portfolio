@@ -1,23 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Shampad — Backend Engineer & Indie Builder. Advanced API integrations, ad tech specialization, and scalable architecture.">
-  <title>Shampad — Backend Engineer & Indie Builder</title>
+  <meta name="description" content="Hire Md Shampad Sharkar, a Senior Python and Django Engineer building scalable SaaS, AdTech data platforms, and AI-powered products for global teams.">
+  <meta name="author" content="Md Shampad Sharkar">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="assets/images/favicon-headshot-round.png?v=3">
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon-headshot-round.png?v=3">
+  <link rel="apple-touch-icon" href="assets/images/favicon-headshot-round.png">
+  <link rel="canonical" href="https://shampadsr.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Md Shampad Sharkar">
+  <meta property="og:url" content="https://shampadsr.com/">
+  <meta property="og:title" content="Md Shampad Sharkar — Senior Python & Django Engineer">
+  <meta property="og:description" content="Scalable SaaS, AdTech data platforms, and AI-powered products for global teams.">
+  <meta property="og:image" content="https://shampadsr.com/assets/images/ChatGPT%20Image%20Aug%2022,%202026,%2010_41_34%20AM.jpg">
+  <meta property="og:image:alt" content="Portrait of Md Shampad Sharkar">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Md Shampad Sharkar — Senior Python & Django Engineer">
+  <meta name="twitter:description" content="Scalable SaaS, AdTech data platforms, and AI-powered products for global teams.">
+  <meta name="twitter:image" content="https://shampadsr.com/assets/images/ChatGPT%20Image%20Aug%2022,%202026,%2010_41_34%20AM.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Md Shampad Sharkar",
+    "url": "https://shampadsr.com/",
+    "jobTitle": "Senior Python & Django Engineer",
+    "address": { "@type": "PostalAddress", "addressLocality": "Dhaka", "addressCountry": "BD" },
+    "knowsAbout": ["Python", "Django", "Django REST Framework", "GraphQL", "PostgreSQL", "AdTech", "Multi-tenant SaaS", "LangGraph"],
+    "sameAs": ["https://github.com/shampadsharkar", "https://www.linkedin.com/in/shampadsharkar/"]
+  }
+  </script>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      document.documentElement.dataset.theme = savedTheme || 'dark';
+    } catch (error) {
+      document.documentElement.dataset.theme = 'dark';
+    }
+  </script>
+  <title>Md Shampad Sharkar — Senior Python & Django Engineer</title>
   <style>
     :root {
-      --bg: #000000;
-      --bg-card: rgba(15, 15, 15, 0.6);
-      --bg-card-hover: rgba(22, 22, 22, 0.8);
-      --border: rgba(255, 255, 255, 0.1);
-      --border-hover: rgba(255, 255, 255, 0.2);
-      --text-primary: #EDEDED;
-      --text-secondary: #A1A1AA;
-      --text-muted: #52525B;
-      --accent: #FFFFFF;
+      --bg: #f6f8f8;
+      --bg-card: rgba(255, 255, 255, 0.86);
+      --bg-card-hover: #ffffff;
+      --border: rgba(15, 46, 47, 0.13);
+      --border-hover: rgba(13, 115, 105, 0.38);
+      --text-primary: #102a2b;
+      --text-secondary: #486064;
+      --text-muted: #708487;
+      --accent: #0f766e;
+      --hero-start: #102a2b;
+      --hero-end: #487075;
+      --nav-bg: rgba(246, 248, 248, 0.76);
+      --pattern: rgba(13, 115, 105, 0.12);
+      --hire-text: #075b55;
       --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    [data-theme="dark"] {
+      --bg: #071617;
+      --bg-card: rgba(12, 30, 31, 0.75);
+      --bg-card-hover: rgba(16, 40, 41, 0.92);
+      --border: rgba(204, 251, 241, 0.14);
+      --border-hover: rgba(94, 234, 212, 0.42);
+      --text-primary: #ecfdf5;
+      --text-secondary: #a7c5c6;
+      --text-muted: #78999b;
+      --hero-start: #f0fdfa;
+      --hero-end: #98c8c6;
+      --nav-bg: rgba(7, 22, 23, 0.76);
+      --pattern: rgba(153, 246, 228, 0.1);
+      --hire-text: #ccfbf1;
     }
 
     * { box-sizing: border-box; }
@@ -28,7 +85,7 @@
     body {
       margin: 0;
       background-color: var(--bg);
-      color: var(--text-primary);
+      color: #ffffff;
       font-family: var(--font-sans);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
@@ -41,10 +98,48 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(var(--pattern) 1px, transparent 1px);
       background-size: 32px 32px;
       mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
       -webkit-mask-image: radial-gradient(ellipse at top, black 20%, transparent 80%);
+    }
+    .bg-aurora {
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .bg-aurora::before,
+    .bg-aurora::after {
+      content: "";
+      position: absolute;
+      width: min(58vw, 820px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      filter: blur(64px);
+      opacity: 0.42;
+      will-change: transform;
+    }
+    .bg-aurora::before {
+      top: -10%;
+      left: 4%;
+      background: radial-gradient(circle, rgba(45, 212, 191, 0.24), rgba(45, 212, 191, 0) 68%);
+      animation: aurora-drift-one 18s ease-in-out infinite alternate;
+    }
+    .bg-aurora::after {
+      right: 1%;
+      bottom: -16%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.18), rgba(56, 189, 248, 0) 68%);
+      animation: aurora-drift-two 23s ease-in-out infinite alternate;
+    }
+    @keyframes aurora-drift-one {
+      from { transform: translate3d(-5%, -3%, 0) scale(0.92); }
+      to { transform: translate3d(18%, 15%, 0) scale(1.14); }
+    }
+    @keyframes aurora-drift-two {
+      from { transform: translate3d(6%, 8%, 0) scale(1.05); }
+      to { transform: translate3d(-16%, -14%, 0) scale(0.9); }
     }
 
     /* Layout */
@@ -58,7 +153,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 50;
-      background: rgba(0, 0, 0, 0.5);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
@@ -85,13 +180,46 @@
       transition: color 0.2s ease;
     }
     .nav a:hover { color: var(--text-primary); }
+    .theme-toggle {
+      width: 34px; height: 34px; padding: 0; border: 1px solid var(--border); border-radius: 50%;
+      background: var(--bg-card); color: var(--text-primary); cursor: pointer; font-size: 0.9rem;
+    }
+    .hire-me {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid rgba(94, 234, 212, 0.42);
+      border-radius: 999px;
+      background: rgba(13, 148, 136, 0.12);
+      color: var(--hire-text);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .hire-me::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #5eead4;
+      box-shadow: 0 0 10px rgba(94, 234, 212, 0.8);
+    }
+    .hire-me:hover {
+      background: rgba(13, 148, 136, 0.24);
+      border-color: #5eead4;
+      transform: translateY(-1px);
+    }
 
     .mobile-nav { display: none; }
     @media(max-width: 640px) {
       .header .nav { display: none; }
+      main.container { padding-bottom: 144px; }
+      .hire-me { padding: 7px 10px; font-size: 0.72rem; }
       .mobile-nav {
         display: flex; position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-        background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+        background: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
         border: 1px solid var(--border); border-radius: 99px; z-index: 50;
         padding: 12px 24px; gap: 24px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
@@ -167,7 +295,7 @@
     .hero-title {
       font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; letter-spacing: -0.04em;
       line-height: 1.1; margin: 0 0 16px 0;
-      background: linear-gradient(180deg, #FFFFFF 0%, #A1A1AA 100%);
+      background: linear-gradient(180deg, var(--hero-start) 0%, var(--hero-end) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .hero-desc { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin: 0; }
@@ -214,13 +342,14 @@
     }
     .profile-photo-badge {
       position: absolute;
+      z-index: 3;
       right: 12px;
       bottom: 12px;
       padding: 6px 10px;
       border: 1px solid rgba(255,255,255,0.18);
       border-radius: 99px;
       background: rgba(0,0,0,0.62);
-      color: var(--text-primary);
+      color: #ffffff;
       font: 0.68rem var(--font-mono);
       letter-spacing: 0.04em;
       backdrop-filter: blur(10px);
@@ -230,7 +359,7 @@
     @keyframes photo-glow { 0%, 100% { transform: translate(-8%, -5%); opacity: 0.35; } 50% { transform: translate(8%, 5%); opacity: 0.75; } }
     @keyframes badge-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
     @media (prefers-reduced-motion: reduce) {
-      .profile-photo-wrap, .profile-photo-wrap::before, .profile-photo-badge { animation: none; }
+      .profile-photo-wrap, .profile-photo-wrap::before, .profile-photo-badge, .bg-aurora::before, .bg-aurora::after { animation: none; }
     }
 
     .flex { display: flex; }
@@ -250,6 +379,7 @@
     .pt-32 { padding-top: 120px; } .pb-24 { padding-bottom: 96px; }
 
     .text-white { color: var(--text-primary); }
+    .text-secondary { color: var(--text-secondary); }
     .text-muted { color: var(--text-muted); }
     .text-sm { font-size: 0.875rem; }
     .text-xl { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
@@ -261,38 +391,38 @@
       padding: 10px 20px; border-radius: 8px; font-size: 0.875rem; font-weight: 500;
       transition: all 0.2s ease; text-decoration: none; cursor: pointer;
     }
-    .btn-primary { background: var(--text-primary); color: var(--bg); }
-    .btn-primary:hover { background: #fff; transform: scale(0.98); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #0d9488; transform: scale(0.98); }
     .btn-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border); }
-    .btn-secondary:hover { background: rgba(255, 255, 255, 0.05); }
+    .btn-secondary:hover { background: rgba(13, 118, 110, 0.08); }
 
     /* Custom Elements */
     .stat-number { font-size: 3rem; font-weight: 700; letter-spacing: -0.04em; color: var(--text-primary); line-height: 1; margin-bottom: 8px;}
     
     .pulse-ring {
       width: 48px; height: 48px; border-radius: 50%;
-      background: rgba(52, 211, 153, 0.1);
+      background: rgba(13, 148, 136, 0.12);
       display: flex; align-items: center; justify-content: center;
       position: relative; margin: 0 auto;
     }
-    .pulse-dot { width: 12px; height: 12px; border-radius: 50%; background: #34d399; }
+    .pulse-dot { width: 12px; height: 12px; border-radius: 50%; background: #0d9488; }
     .pulse-ring::before {
       content: ""; position: absolute; inset: 0; border-radius: 50%;
-      background: rgba(52, 211, 153, 0.3);
+      background: rgba(13, 148, 136, 0.28);
       animation: pulse-animation 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
     @keyframes pulse-animation { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
 
     .skills-tags { display: flex; flex-wrap: wrap; gap: 8px; }
     .skill-tag {
-      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
+      background: rgba(13, 118, 110, 0.05); border: 1px solid var(--border);
       padding: 6px 14px; border-radius: 99px; font-size: 0.85rem;
       color: var(--text-secondary); font-family: var(--font-mono); transition: all 0.2s;
     }
-    .skill-tag:hover { background: rgba(255, 255, 255, 0.08); color: var(--text-primary); border-color: var(--border-hover); }
+    .skill-tag:hover { background: rgba(13, 118, 110, 0.11); color: var(--text-primary); border-color: var(--border-hover); }
 
     .project-badge {
-      background: #000; border: 1px solid var(--border); color: var(--text-secondary);
+      background: rgba(13, 118, 110, 0.08); border: 1px solid var(--border); color: var(--text-secondary);
       font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 8px; border-radius: 6px; text-transform: uppercase;
     }
     .project-icon {
@@ -300,6 +430,77 @@
       border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
       font-size: 1.2rem; color: var(--text-primary);
     }
+
+    /* Flagship project treatment */
+    .lablink-card {
+      border-color: rgba(45, 212, 191, 0.28);
+      background: radial-gradient(circle at 100% 0%, rgba(45, 212, 191, 0.12), transparent 36%), var(--bg-card);
+    }
+    .lablink-card:hover {
+      border-color: rgba(94, 234, 212, 0.52);
+      background: radial-gradient(circle at 100% 0%, rgba(45, 212, 191, 0.18), transparent 42%), var(--bg-card-hover);
+    }
+    .lablink-visual {
+      min-height: 112px;
+      margin: -8px -8px 24px;
+      padding: 16px;
+      border: 1px solid rgba(94, 234, 212, 0.22);
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.42), rgba(6, 78, 59, 0.16));
+      overflow: hidden;
+    }
+    .lablink-visual-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #ccfbf1;
+      font: 0.68rem var(--font-mono);
+      letter-spacing: 0.08em;
+    }
+    .lablink-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #99f6e4;
+    }
+    .lablink-live::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #5eead4;
+      box-shadow: 0 0 10px rgba(94, 234, 212, 0.9);
+    }
+    .lablink-visual-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .lablink-mini-card {
+      min-height: 48px;
+      padding: 9px;
+      border: 1px solid rgba(204, 251, 241, 0.13);
+      border-radius: 8px;
+      background: rgba(2, 44, 34, 0.42);
+    }
+    .lablink-mini-label { color: rgba(204, 251, 241, 0.6); font: 0.58rem var(--font-mono); text-transform: uppercase; }
+    .lablink-mini-value { color: #f0fdfa; font-size: 0.92rem; font-weight: 600; margin-top: 4px; }
+    .lablink-spark { display: flex; align-items: end; gap: 3px; height: 21px; margin-top: 6px; }
+    .lablink-spark i { width: 7px; border-radius: 3px 3px 1px 1px; background: rgba(94, 234, 212, 0.78); }
+    .lablink-spark i:nth-child(1) { height: 35%; }.lablink-spark i:nth-child(2) { height: 62%; }.lablink-spark i:nth-child(3) { height: 45%; }.lablink-spark i:nth-child(4) { height: 82%; }.lablink-spark i:nth-child(5) { height: 100%; }
+    .lablink-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 18px; }
+    .lablink-highlight { color: #99f6e4; font: 0.7rem var(--font-mono); }
+    .lablink-highlight + .lablink-highlight::before { content: "•"; color: rgba(153, 246, 228, 0.45); margin-right: 8px; }
+
+    .section-intro { max-width: 620px; margin: -12px 0 24px; color: var(--text-secondary); }
+    .service-card { min-height: 214px; }
+    .service-number { color: #0f766e; font: 0.72rem var(--font-mono); letter-spacing: 0.08em; margin-bottom: 30px; }
+    .service-card p { margin-bottom: 0; }
+    .trust-card { min-height: 150px; }
+    .trust-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0 0 8px; }
+    .text-link { color: #0f766e; font-weight: 600; text-decoration: none; }
+    .text-link:hover { text-decoration: underline; }
     
     .exp-list { list-style: none; padding: 0; margin: 0; flex: 1; }
     .exp-list li { position: relative; padding-left: 20px; margin-bottom: 12px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; }
@@ -312,11 +513,23 @@
     }
     .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 
+    /* Keep the hero and header readable at phone widths. This follows the base
+       component rules above, so it correctly wins over their desktop layout. */
+    @media (max-width: 640px) {
+      .header-inner { gap: 8px; }
+      .logo { flex: 1; min-width: 0; font-size: 1rem; white-space: nowrap; }
+      .theme-toggle { flex: 0 0 32px; width: 32px; height: 32px; }
+      .hire-me { flex: 0 0 auto; }
+      .bio-layout { grid-template-columns: 1fr; gap: 24px; }
+      .profile-photo-wrap { max-width: 220px; margin: 0 auto; }
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="bg-pattern"></div>
+  <div class="bg-aurora" aria-hidden="true"></div>
+  <div class="bg-pattern" aria-hidden="true"></div>
 
   <header class="header">
     <div class="container header-inner">
@@ -324,9 +537,12 @@
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#projects">Works</a>
+        <a href="notes.html">Notes</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">◐</button>
+      <a href="#contact" class="hire-me">Hire me</a>
     </div>
   </header>
 
@@ -351,11 +567,11 @@
           </div>
           <div>
             <div class="label">Introduction</div>
-            <h1 class="hero-title">Backend Engineer<br>& Indie Builder</h1>
-            <p class="hero-desc">I build high-throughput systems, optimize APIs, and ship side projects. Currently running Tara Systems out of Dhaka, bringing 5+ years of Python, Django, and architecture experience.</p>
+            <h1 class="hero-title">Senior Python & Django Engineer</h1>
+            <p class="hero-desc">I build scalable SaaS, AdTech data platforms, and AI-powered products for global teams. Based in Dhaka (UTC+6), with 5+ years of Python, Django, and architecture experience.</p>
             <div class="flex gap-4 mt-6">
               <a href="#projects" class="btn btn-primary">Selected Works</a>
-              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+              <a href="#contact" class="btn btn-secondary">Discuss a project</a>
             </div>
           </div>
         </div>
@@ -371,13 +587,6 @@
       <div class="bento-card col-span-1 row-span-1 flex-col justify-center text-center items-center animate-on-scroll" style="transition-delay: 100ms;">
         <div class="pulse-ring mb-4"><div class="pulse-dot"></div></div>
         <div class="text-sm text-secondary">Available for remote roles & freelance contracts</div>
-      </div>
-
-      <!-- Niche -->
-      <div class="bento-card col-span-2 row-span-1 flex-col justify-center animate-on-scroll" style="transition-delay: 150ms;">
-        <div class="label">Niche Expertise</div>
-        <h3 class="text-xl text-white mb-2 mt-0">Ad Tech Platforms</h3>
-        <p class="text-sm text-muted mb-0">Deep familiarity with ad network integrations (Google Ads, TikTok, GAM), programmatic pipelines, and high-volume data importers.</p>
       </div>
 
     </div>
@@ -404,26 +613,77 @@
       </div>
     </div>
 
+    <!-- Services -->
+    <h2 class="section-heading animate-on-scroll" id="services">How I can help</h2>
+    <p class="section-intro animate-on-scroll">I partner with product teams that need a dependable backend foundation, a difficult integration untangled, or a production system made faster.</p>
+    <div class="bento-grid">
+      <div class="bento-card service-card col-span-2 flex-col animate-on-scroll">
+        <div class="service-number">01 / SYSTEMS</div>
+        <h3 class="text-xl text-white mb-2 mt-0">SaaS & API architecture</h3>
+        <p>Design and build Django/DRF backends, multi-tenant products, permissions, asynchronous workflows, and maintainable API boundaries.</p>
+      </div>
+      <div class="bento-card service-card col-span-2 flex-col animate-on-scroll" style="transition-delay: 50ms;">
+        <div class="service-number">02 / DATA</div>
+        <h3 class="text-xl text-white mb-2 mt-0">AdTech & data integrations</h3>
+        <p>Connect fragmented vendor APIs, normalize reporting data, and operate reliable import pipelines across high-volume platforms.</p>
+      </div>
+      <div class="bento-card service-card col-span-2 flex-col animate-on-scroll" style="transition-delay: 100ms;">
+        <div class="service-number">03 / PERFORMANCE</div>
+        <h3 class="text-xl text-white mb-2 mt-0">Performance rescue</h3>
+        <p>Profile bottlenecks, remove costly query patterns, and improve database and GraphQL response times without destabilising delivery.</p>
+      </div>
+      <div class="bento-card service-card col-span-2 flex-col animate-on-scroll" style="transition-delay: 150ms;">
+        <div class="service-number">04 / AI</div>
+        <h3 class="text-xl text-white mb-2 mt-0">Practical AI features</h3>
+        <p>Build product-focused AI workflows with clear guardrails—from reporting assistants to voice-first learning experiences.</p>
+      </div>
+    </div>
+
 
     <!-- SECTION: PROJECTS -->
     <h2 class="section-heading animate-on-scroll" id="projects">Selected Works</h2>
     <div class="bento-grid">
       
       <!-- LabLink -->
-      <a href="https://lablink.bd" target="_blank" class="bento-card col-span-2 row-span-2 flex-col animate-on-scroll">
+      <a href="https://lablink.bd" target="_blank" rel="noopener noreferrer" class="bento-card lablink-card col-span-2 row-span-2 flex-col animate-on-scroll">
+        <div class="lablink-visual" aria-hidden="true">
+          <div class="lablink-visual-head">
+            <span>LABLINK / OPERATIONS</span>
+            <span class="lablink-live">IN PRODUCTION</span>
+          </div>
+          <div class="lablink-visual-grid">
+            <div class="lablink-mini-card">
+              <div class="lablink-mini-label">Workflow</div>
+              <div class="lablink-spark"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="lablink-mini-card">
+              <div class="lablink-mini-label">Access</div>
+              <div class="lablink-mini-value">6 roles</div>
+            </div>
+            <div class="lablink-mini-card">
+              <div class="lablink-mini-label">Architecture</div>
+              <div class="lablink-mini-value">Multi-tenant</div>
+            </div>
+          </div>
+        </div>
         <div class="flex justify-between items-start mb-6">
           <div class="project-icon">✦</div>
           <span class="project-badge">SaaS</span>
         </div>
         <h3 class="text-2xl text-white mb-2 mt-0">LabLink</h3>
-        <p class="text-secondary flex-1">Multi-tenant diagnostic center management system built for Bangladesh's healthcare market. Covers the full workflow — patient registration, test ordering, structured report generation with gender/age-aware reference ranges, branded PDF printing, and delivery tracking. Features a 6-tier role system (Superadmin → Patient), tenant isolation at the queryset level, and Celery-powered async notifications. Currently in production.</p>
+        <div class="lablink-highlights">
+          <span class="lablink-highlight">6-tier access control</span>
+          <span class="lablink-highlight">Tenant-isolated data</span>
+          <span class="lablink-highlight">Production SaaS</span>
+        </div>
+        <p class="text-secondary flex-1">Multi-tenant diagnostic-center operating system built for Bangladesh's healthcare market. It takes teams from patient registration and test orders to structured reports, branded PDF printing, and delivery tracking—with gender- and age-aware reference ranges and asynchronous notifications.</p>
         <div class="skills-tags mt-6">
           <span class="skill-tag">Django 6</span><span class="skill-tag">DRF</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Celery</span><span class="skill-tag">Redis</span><span class="skill-tag">React 18</span><span class="skill-tag">Docker</span>
         </div>
       </a>
 
       <!-- SmartClip -->
-      <a href="https://smartclip.shampadsr.com" target="_blank" class="bento-card col-span-2 row-span-1 flex-col justify-between animate-on-scroll">
+      <a href="https://smartclip.shampadsr.com" target="_blank" rel="noopener noreferrer" class="bento-card col-span-2 row-span-1 flex-col justify-between animate-on-scroll">
         <div class="flex justify-between items-start mb-3">
            <h3 class="text-xl text-white mt-0 mb-0">SmartClip</h3>
            <span class="project-badge">macOS</span>
@@ -435,7 +695,7 @@
       </a>
 
       <!-- TankLog -->
-      <a href="https://play.google.com/store/apps/details?id=com.fuellogpro.app&hl=en" target="_blank" class="bento-card col-span-1 row-span-1 flex-col justify-between animate-on-scroll">
+      <a href="https://play.google.com/store/apps/details?id=com.fuellogpro.app&hl=en" target="_blank" rel="noopener noreferrer" class="bento-card col-span-1 row-span-1 flex-col justify-between animate-on-scroll">
         <div class="flex justify-between items-start mb-3">
            <h3 class="text-xl text-white mt-0 mb-0">TankLog</h3>
         </div>
@@ -446,7 +706,7 @@
       </a>
 
       <!-- MCP Server -->
-      <a href="https://mcp.shampadsr.com" target="_blank" class="bento-card col-span-1 row-span-1 flex-col justify-between animate-on-scroll">
+      <a href="https://mcp.shampadsr.com" target="_blank" rel="noopener noreferrer" class="bento-card col-span-1 row-span-1 flex-col justify-between animate-on-scroll">
         <div class="flex justify-between items-start mb-3">
            <h3 class="text-xl text-white mt-0 mb-0">MCP Server</h3>
         </div>
@@ -480,6 +740,21 @@
         </div>
       </a>
 
+    </div>
+
+    <!-- Trust -->
+    <h2 class="section-heading animate-on-scroll">Working together</h2>
+    <div class="bento-grid">
+      <div class="bento-card trust-card col-span-2 flex-col animate-on-scroll">
+        <div class="label">Availability</div>
+        <h3 class="trust-title">Remote contract & full-time roles</h3>
+        <p>Based in Dhaka (UTC+6), collaborating comfortably with distributed teams worldwide.</p>
+      </div>
+      <div class="bento-card trust-card col-span-2 flex-col animate-on-scroll" style="transition-delay: 50ms;">
+        <div class="label">Proof of work</div>
+        <h3 class="trust-title">Built and shipped in production</h3>
+        <p>Explore the detailed <a class="text-link" href="work/lablink.html">LabLink case study</a>, <a class="text-link" href="work/adtech-performance.html">AdTech performance story</a>, or <a class="text-link" href="resume.html">professional profile</a>.</p>
+      </div>
     </div>
 
     <div class="bento-grid">
@@ -543,10 +818,10 @@
       <a href="mailto:shampad.sharkar@gmail.com" class="bento-card col-span-2 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll">
           shampad.sharkar@gmail.com ↗
       </a>
-      <a href="https://github.com/shampadsharkar" target="_blank" class="bento-card col-span-1 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll" style="transition-delay: 50ms;">
+      <a href="https://github.com/shampadsharkar" target="_blank" rel="noopener noreferrer" class="bento-card col-span-1 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll" style="transition-delay: 50ms;">
           GitHub ↗
       </a>
-      <a href="https://www.linkedin.com/in/shampadsharkar/" target="_blank" class="bento-card col-span-1 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll" style="transition-delay: 100ms;">
+      <a href="https://www.linkedin.com/in/shampadsharkar/" target="_blank" rel="noopener noreferrer" class="bento-card col-span-1 flex-row items-center justify-center text-xl text-white no-underline text-center animate-on-scroll" style="transition-delay: 100ms;">
           LinkedIn ↗
       </a>
     </div>
@@ -581,6 +856,16 @@
         });
       });
     });
+
+    const themeToggle = document.querySelector('.theme-toggle');
+    const setTheme = (theme) => {
+      document.documentElement.dataset.theme = theme;
+      themeToggle.textContent = theme === 'dark' ? '☀' : '◐';
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      try { localStorage.setItem('portfolio-theme', theme); } catch (error) {}
+    };
+    setTheme(document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light');
+    themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
   </script>
 </body>
 </html>

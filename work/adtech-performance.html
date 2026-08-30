@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="How Md Shampad Sharkar reduced a complex AdTech GraphQL report from approximately two minutes to ten seconds.">
+  <link rel="canonical" href="https://shampadsr.com/work/adtech-performance.html"><link rel="icon" type="image/png" href="../assets/images/favicon-headshot-round.png?v=3"><link rel="shortcut icon" type="image/png" href="../assets/images/favicon-headshot-round.png?v=3"><link rel="apple-touch-icon" href="../assets/images/favicon-headshot-round.png">
+  <link rel="stylesheet" href="../site.css"><title>AdTech performance case study — Md Shampad Sharkar</title>
+</head>
+<body>
+  <header><nav class="wrap nav"><a class="brand" href="../index.html">Md Shampad Sharkar</a><div class="nav-links"><a href="../index.html#projects">Work</a><a href="../notes.html">Notes</a><a href="../index.html#contact">Hire me</a></div></nav></header>
+  <main class="wrap">
+    <div class="hero"><p class="eyebrow">Case study / enterprise AdTech</p><h1>From ~2 minutes to ~10 seconds.</h1><p class="lead">Improving a slow, complex GraphQL reporting query while helping build reliable data pipelines across more than 20 advertising networks.</p></div>
+    <div class="metrics"><div class="card"><span class="metric-value">~12×</span><span class="metric-label">faster report response</span></div><div class="card"><span class="metric-value">20+</span><span class="metric-label">advertising networks integrated</span></div><div class="card"><span class="metric-value">1</span><span class="metric-label">unified importer framework</span></div></div>
+    <section><p class="eyebrow">The problem</p><h2>Reporting that takes minutes breaks an otherwise useful product.</h2><p>A complex GraphQL report had accumulated N+1 query patterns and expensive data access paths. At the same time, reporting data arrived from a growing collection of external advertising APIs, each with its own format and operational quirks.</p></section>
+    <section class="grid"><div class="card"><p class="eyebrow">What I changed</p><ul><li>Investigated and removed critical N+1 access patterns.</li><li>Refactored legacy data tasks into a reusable importer framework.</li><li>Worked across reporting data sourced from Google Ads, TikTok, GAM, Mintegral, Liftoff, and more.</li></ul></div><div class="card"><p class="eyebrow">Impact</p><p>The most complex report fell from approximately two minutes to approximately ten seconds—making the reporting workflow substantially more usable while giving future integrations a clearer foundation.</p></div></section>
+    <section><p class="eyebrow">Engineering context</p><h2>Performance work connected to product infrastructure.</h2><p><span class="tag">Python</span><span class="tag">GraphQL / Strawberry</span><span class="tag">BigQuery</span><span class="tag">GCP</span><span class="tag">GKE</span></p><p>The work sat at the intersection of API design, data modelling, background ingestion, and production infrastructure—so the solution needed to improve speed without making integrations more brittle.</p></section>
+    <section class="card"><p class="eyebrow">Takeaway</p><h2>Measure the expensive path, then make the successful pattern reusable.</h2><p>The durable result was not only a faster report. It was an importer approach that made additional data sources less costly to add and maintain.</p><a class="back" href="../index.html#contact">Talk about performance work →</a></section>
+  </main><footer class="wrap">© Md Shampad Sharkar · Built in Dhaka, working globally.</footer>
+</body></html>
